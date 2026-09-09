@@ -1,0 +1,268 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0e0c0c, #1e1717);
+    color: white;
+    padding: 10px;
+}
+
+.navbar{
+    margin-top: -10px;
+    width: 100%;  
+}
+
+.nav-item li{
+  justify-content: center;
+  text-align: center;
+}
+
+#li a:hover{
+ color: yellow;
+}
+
+.calculator{
+  display: grid;
+    width: 70%;
+    max-width: 95%;
+    margin-left: 20%;
+    margin-top: 3%;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 2%;
+    padding: 40px;
+    justify-content: center;
+    text-align: center;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(rgb(0, 0, 156), rgb(167, 146, 146));
+    
+}
+
+.calculator h1{
+    font-size: 60px;
+    color: #ffff76;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+h4{
+    margin-top: 15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.input-box{
+    margin: 40px 0;
+    padding: 35px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+}
+
+.input-box input{
+    flex: 1;
+    margin-right: 20px;
+    padding: 14px 20px;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    position: relative;
+}
+
+.input-box button{
+    background: #ffff76;
+    border: 0;
+    outline: 0;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #333;
+    cursor: pointer;
+    
+}
+
+.input-box input::-webkit-calendar-picker-indicator{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    position: absolute;
+    background-position: calc(100% - 10px);
+    background-size: 30px;
+    cursor: pointer;
+}
+
+#result{
+    font-size: 20px;
+}
+
+
+#result span{
+    color: #ffff76;
+}
+
+h5{
+    padding-top: 15px;
+   text-align:center;
+   font-size: medium;
+}
+
+@media (max-width: 600px) {
+        .input-box{
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .calculator{
+          margin: 15%;
+        }
+
+        .calculator h1{
+          font-size:large;
+        }
+
+        .calculator h4{
+          font-size: small;
+        }
+        .input-box input,
+        .input-box button{
+            width: 100%;
+            padding: 10px 15;
+            font-size: small;
+        }
+
+        .input-button{
+            padding: 14px;
+            font-size: 16px;
+            
+        }
+}
+
+
+
+.age-info {
+  
+  margin: 40px auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: white;
+
+
+  line-height: 1.5;
+    max-width: 700px;
+    text-align: justify;
+    margin-bottom: 25px;
+    flex: 1 1 0%;
+}
+
+.age-info h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.age-info .icon {
+  font-size: 26px;
+}
+
+.age-info p {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.age-info strong {
+  font-weight: 600;
+}
+
+.age-info a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.age-info a:hover {
+  text-decoration: underline;
+}
+
+/* 📱 Responsive */
+@media (max-width: 600px) {
+  .age-info {
+    padding: 0 15px;
+  }
+
+  .age-info h2 {
+    font-size: 22px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.table-wrapper {
+  max-width: 900px;
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.table-wrapper h2{
+    
+        color:#141516;
+    
+}
+
+/* Scroll container */
+.table-scroll {
+  max-height: 400px;      /* controls visible height */
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.age-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.age-table th,
+.age-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #141516;
+  text-align: left;
+}
+
+.age-table th {
+  position: sticky;
+  top: 0;
+  background: #151515;
+  z-index: 1;
+}
+
+.age-table tr {
+  background: #111111;
+}
+
+.note {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #0c0c0c;
+}

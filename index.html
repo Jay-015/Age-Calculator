@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    
+    
+    
+        <nav class="navbar navbar-expand-lg-end navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><strong style="color: yellow;">AC</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" id="li">
+          <a class="nav-link active" aria-current="page" href="#home">Home</a>
+        </li>
+        <li class="nav-item" id="li">
+          <a class="nav-link active" href="#about">About</a>
+        </li>
+        <li class="nav-item" id="li">
+          <a class="nav-link active" href="#myage">My Age</a>
+        </li>
+        <li class="nav-item">
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+        <div class="calculator" id="home">
+            <h1> Age Calculator </h1><br>
+            <h4>Tell me your Date of Birth I'll show u your true Age.</h4>
+            <div class="input-box">
+                <input type="date" id="date">
+                <button onclick="calculateAge()">Calculate</button>
+            </div>
+            <p id="result"></p>
+             
+        </div>
+
+
+            <section class="age-info" id="about">
+  <h2>
+    <span class="icon">📅</span>
+    How to calculate your age?
+  </h2>
+
+  <p>
+    This free online age calculator, a.k.a. Pearson age calculator, makes it as easy as
+    possible to calculate the age of a person, movable property, real estate, institution
+    or a company. All you need to enter is the <strong>date of birth</strong> / construction /
+    establishment etc. and click "Calculate".
+  </p>
+
+  <p>
+    The result will show you the number of full years, months, weeks, and days and is useful
+    when answering questions like "how old am I in years", "how old am I in days" or
+    "how old am I in months", "how old is someone", "how old is something", and so on.
+  </p>
+
+  <p>
+    Alternatively, <strong>enter just the year you were born in</strong> to get an approximate
+    chronological age and running age in 2026 or any other year of interest, be it in the
+    future or in the past.
+  </p>
+
+  <p>
+    If you are asking yourself how old you are and want to get the answer by hand, you would
+    need to make sure you account for leap years (366 instead of 365 days, February gets an
+    extra day), so it can be a tedious task.
+  </p>
+
+  <p>
+    If you are doing this calculation for a historical figure, then you would need to take
+    into account possible differences in the calendar used when they were born and nowadays.
+    For example, some Eastern European countries used the Julian calendar until they switched
+    to the Gregorian one in the late 19-th and early 20-th century.
+  </p>
+
+  <p>
+    The age calculator by date of birth can also help you calculate your age at any given
+    point in time after your date of birth (DoB).
+  </p>
+</section>
+
+
+
+
+              <div class="table-wrapper" id="myage">
+  <h2>How old in 2026?</h2>
+
+  <div class="table-scroll">
+    <table class="age-table">
+      <thead>
+        <tr>
+          <th>Year of birth</th>
+          <th>Current age*</th>
+        </tr>
+      </thead>
+      <tbody id="ageTableBody">
+        <!-- JS will inject rows here -->
+      </tbody>
+    </table>
+  </div>
+
+  <p class="note">
+    *Age shown is how old you would be at the end of 2026.
+  </p>
+</div>
+
+    </div>
+
+    <h5>© 2026 Jay Koriya. All rights reserved.</h5>
+
+<script>
+
+
+
+let userInput = document.getElementById("date");
+userInput.max = new Date().toISOString().split("T")[0];
+let result = document.getElementById("result");
+
+function calculateAge(){
+    let birthDate = new Date(userInput.value);
+
+    let d1 = birthDate.getDate();
+    let m1 = birthDate.getMonth() + 1;
+    let y1 = birthDate.getFullYear();
+
+    let today = new Date();
+
+    let d2 = today.getDate();
+    let m2 = today.getMonth() + 1;
+    let y2 = today.getFullYear();
+
+    let d3, m3, y3;
+
+    y3 = y2 - y1;
+
+    if(m2 >= m1){
+        m3 = m2 - m1;
+    }else{
+        y3--;
+        m3 = 12 + m2 - m1;
+    }
+
+    if(d2 >= d1){
+        d3 = d2 - d1;
+    }else{
+        m3--;
+        d3 = getDaysInMonth(y1, m1) + d2 - d1;
+    }
+
+    if(m3 < 0){
+        m3 = 11;
+        y3--;
+    }
+
+    result.style.backgroundColor = "black"
+    result.style.padding = "10px";
+    result.style.borderRadius = "8px";
+   result.innerHTML = `you are <span>${y3}</span> years, <span>${m3}</span> months and <span>${d3}</span> days old.`; 
+     
+}
+
+ function getDaysInMonth(year, month){
+    return new Date(year, month, 0).getDate();
+ }
+
+
+ const tableBody = document.getElementById("ageTableBody");
+
+const startYear = 2026;
+const endYear = 1926;
+const currentYear = 2026;
+
+for (let year = startYear; year >= endYear; year--) {
+  const age = currentYear - year;
+
+  const row = document.createElement("tr");
+
+  const yearCell = document.createElement("td");
+  yearCell.textContent = year;
+
+  const ageCell = document.createElement("td");
+  ageCell.textContent = `${age} year${age !== 1 ? "s" : ""} old`;
+
+  row.appendChild(yearCell);
+  row.appendChild(ageCell);
+
+  tableBody.appendChild(row);
+
+  // inspect-disable
+// document.addEventListener('contextmenu', function (e) {
+//   e.preventDefault();
+// });
+ }
+
+
+</script>
+
+
+
+</body>
+</html>
